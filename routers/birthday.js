@@ -19,7 +19,7 @@ birthdayRouter.post('/add', async (req, res) => {
         return;
     }
 
-    let existingRecipient = await Birthday.findOne({ recipientName });
+    let existingRecipient = await Birthday.findOne({ recipientName, username });
     if (existingRecipient) {
         req.logger.info(`Recipient already exists with name [${recipientName}] for user [${username}]`);
         res.send({ message: `Recipient with name [${recipientName}] already exists!` });
